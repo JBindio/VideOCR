@@ -1,0 +1,18 @@
+{%load static%}
+
+<div class="slider">
+  <input type="radio" name="slide" id="slide1" checked>
+  <input type="radio" name="slide" id="slide2">
+  <input type="radio" name="slide" id="slide3">
+
+  <ul id="imgholder" class="imgs">
+      <li><img src="{% static 'surveyapp/images/part1/part1_01/hour.png' %}" style="width: 900px; height: 500px;"></li>
+      <li><img src="{% static 'surveyapp/images/part1/part1_01/day.png' %}" style="width: 900px; height: 500px;"></li>
+      <li><img src="{% static 'surveyapp/images/part1/part1_01/month.png' %}" style="width: 900px; height: 500px;;"></li>
+  </ul>
+  <div class="bullets">
+      <label for="slide1">&nbsp;</label>
+      <label for="slide2">&nbsp;</label>
+      <label for="slide3">&nbsp;</label>
+  </div>
+</div>

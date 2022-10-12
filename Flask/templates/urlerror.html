@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<!-- static 폴더의 데이터 활용하기 -->
+
+<html>
+    <!-- HEAD(제목 등) -->
+    <!-- 브라우저에서 HTML 실행시 가장 먼저 읽어 들이는 곳 -->
+    <!-- JavaScript, CSS 등의 처리를 기본적으로 수행 -->
+<head>
+    <title>보강(보는강의)</title>
+    <link rel="stylesheet" type="text/css" href = "https://getbootstrap.kr/docs/5.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href = "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+
+<!-- 왼쪽 사이드 메뉴 스크립트 -->
+
+
+</head>
+
+    <!-- BODY(본문) -->
+<body>
+    {% include '/include/nav.html'%}
+
+<center>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+<div style="padding: 200px; display: flex; justify-content: center; align-items: center;">
+    <h2> 
+    잘못된 URL 입니다
+    <br>
+    <br>
+    URL 주소를 확인하세요
+    </h2>
+</div>
+</center>
+
+
+{% include '/include/footer.html'%}
+</body>
+</html>

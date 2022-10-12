@@ -1,0 +1,79 @@
+{% load static %}
+<div style = "background-color: #343333; max-width: 100%; display: grid; grid-template-columns: 1fr 4fr 1fr; padding :20px;">
+  <div style="margin:10px; align-self: center;">
+  <a class="navbar-brand" href="/survey/main">
+    <img src="{% static 'surveyapp/images/main/logo.png' %}" alt="" style="width: 40%;" >
+  </a>
+</div>
+
+<div style="text-align:center; margin: 20px; align-self: center;">
+    <a href="/survey/main" style="font-size: 60px; font-weight: bold; color: #EEEEEE; text-decoration: none;">
+    SURVEY & SERVICE
+    </a>
+</div>
+</div>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-red" style="background-color: #F2B117; padding-top: 20px; padding-bottom: 20px;">
+  <div class="container-fluid">
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+    <ul class="navbar-nav">
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="font-size:20px; color: #343333; font-weight: bold;">
+          경제지표분석
+        </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <li><a class="dropdown-item" href="/survey/part1_01/">연도별 최저임금 현황</a></li>
+            <li><a class="dropdown-item" href="/survey/part1_02/">연도별 물가 현황</a></li>
+            <li><a class="dropdown-item" href="/survey/part1_03/">연도별 GDP 현황</a></li>
+          </ul>
+      </li>
+    </ul>
+
+    <ul class="navbar-nav">
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="font-size:20px; color: #343333; font-weight: bold;">
+          고용현황분석
+        </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <li><a class="dropdown-item" href="/survey/part2_01/">연도별 서비스직 근로자수 현황</a></li>
+            <li><a class="dropdown-item" href="/survey/part2_02/">연도별 서비스직 근로시간 현황</a></li>
+          </ul>
+      </li>
+    </ul>
+
+    <ul class="navbar-nav">
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="font-size:20px; color: #343333; font-weight: bold;">
+          만족현황분석
+        </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <li><a class="dropdown-item" href="/survey/part3_01/">전년도 만족도 현황</a></li>
+            <li><a class="dropdown-item" href="/survey/part3_02/">인력대체기술 현황</a></li>
+          </ul>
+      </li>
+    </ul>
+
+    <div class="dropdown" style="margin-left: auto;">
+      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" style="font-size:20px;  background-color:#343333;">
+        설문조사
+      </button> 
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton1" style="text-align: center;">
+          <li><a class="dropdown-item" href="/survey/survey_form">만족도 조사참여</a></li>
+          <li><a class="dropdown-item" href="/survey/survey_result/">만족도 조사결과</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  </nav>
+
+
+
+<!-- <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+  Part2
+</a>
+<ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+  <li><a class="dropdown-item" href="/survey/part1_01/">서비스직 선정이유 (사업체분석)</a></li>
+  <li><a class="dropdown-item" href="/survey/part1_02/">연도별 서비스직 고용 현황</a></li>
+  <li><a class="dropdown-item" href="/survey/part1_03/">연도별 GDP 현황</a></li>
+</ul> -->

@@ -1,0 +1,34 @@
+#navi {
+    background-color: #ffffff;
+    max-width: 100%; 
+    height: 130px;
+    display: grid;
+    grid-template-columns: 1fr 5fr 1fr;
+    padding: 15px;
+    border-bottom: 2px solid #bbb;
+    position: fixed;
+    z-index: 9999;
+
+}
+
+#logo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#logo .logo {
+    width: 30%;
+    padding-bottom: 10px;
+}
+
+
+#maintitle {
+    font-size: 40px; 
+    font-weight: bold;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}

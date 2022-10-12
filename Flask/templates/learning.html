@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>보강(보는강의)</title>
+
+<!-- stylesheet / css -->
+    <link rel="stylesheet" type="text/css" href = "/static/css/learning.css">
+    <link rel="stylesheet" type="text/css" href = "https://getbootstrap.kr/docs/5.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href = "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+
+<!-- 사이드 메뉴 스크립트 -->
+    <script type="text/javascript" src="/static/js/sidemenu.js"></script>
+
+<!-- 유튜브 동영상 제어 스크립트 -->
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script src='https://www.youtube.com/iframe_api'></script>
+    <script>
+    var player
+
+    function youtube(){
+        var video_id = '{{(video_id)}}';
+        player = new YT.Player("youtube", {
+        width: 1600,
+        height: 900,
+        videoId: video_id,
+    });
+    };
+    
+    function convert(input) {
+    
+        const afterStr = input.split(':');
+    
+        let hour = 0;
+        let minutes = 0;
+        let seconds = 0;
+    
+        if (afterStr.length == 3) { //시:분:초 일때
+        hour = +afterStr[0]; //시
+        minutes = +afterStr[1]; //분
+        seconds = +afterStr[2]; //초
+    
+        } else { //분:초 일때
+    
+        minutes = +afterStr[0]; //시
+        seconds = +afterStr[1]; //분
+    
+        }
+        const result = hour * 3600 + minutes * 60 + seconds;
+    
+        return result;
+    }
+    
+    
+    $(function () {
+        $(".seekTo").click(function () {
+        const seektime = $(this).html();
+        const seekto_s = convert(seektime);
+        player.seekTo(seekto_s);
+        })
+    })
+    </script>
+
+</head>
+
+    <!-- BODY(본문) -->
+<body onload="youtube()">
+    {% include '/include/nav.html'%}
+<div id="container">
+    <div id="mainvideo">
+        <div id = 'mainvideotitle'>
+        <p>{{vi_title}}<hr> </p>
+        </div>
+
+        <div id="youtube">
+        </div>
+
+        <div style="position: absolute; margin-top: 10px;">
+            <a style="text-decoration: none; color: black;" target="_blank" href="https://www.youtube.com/channel/{{ch_id}}">
+                <img src="{{ch_img}}" style='border: 1px; border-radius: 50%; width: 50px; height: 50px;'> 
+        </div>
+        <div style="position: absolute; position: relative; left: 60px; top:7px">
+            <span style="font-size: 20px;">{{ch_title}}</span><br> 
+            </a>
+            <span style="font-size: 15px;">{{ch_subscriber}}</span>
+        </div>
+        <div style="position: relative;">
+            <br>
+            {%for vi_description in vi_description%}
+            <span style="font-size: 15px;">
+                {{vi_description}}<br>
+            </span>
+            {%endfor%}
+
+        </div>
+    </div>
+
+        <div id = "sidemenu">
+                <button onclick="show('videoinfo');" >동영상정보</button>
+                <br>
+                <br>
+                <button onclick="show('videotext');">영상내자막</button>
+                <br>
+                <br>
+                <button onclick="show('qna');">QnA</button>
+                <br>
+                <br>
+                <button onclick="show('reco');">유튜브<br>추천영상</button>
+                <br>
+                <br>
+        </div>
+    
+    <div id="videoinfo">
+        <div class="sidemenutitle">
+        동영상 정보 
+        <button class ='sidemenuclose' onclick="hide('videoinfo');">
+        >
+        </button>
+        </div>
+        <hr>
+        <div class="sidemenutext">
+        <span class="videoinfotext">재생시간 ⏳</span> : {{vi_duration}} <br><br>
+        <span class="videoinfotext">유튜브 조회수 👀</span> : {{vi_view_count}}회 <br><br>
+        <span class="videoinfotext">유튜브 좋아요 👍🏻</span> : {{vi_like_count}}개 <br><hr style="margin-bottom: 25px;">
+        {{hash_final}}
+        
+        <!-- <center>
+        <span class="sidetextbutton">유튜브 추천영상</span>
+        </center><br>
+
+        {%for reco in range(0,10)%}
+        <a style="text-decoration: none; color: black;" target="_blank" href="{{reco_url[reco]}}">
+        
+        <img style="width: 416px; height: 234px;" target="_blank"  src="{{reco_thumbnails[reco]}}" alt="썸네일" >
+        <p style="font-size: 18px;"> {{reco_title[reco]}} </p>
+        </a>
+        {%endfor%} -->
+        </div>
+    </div>
+
+    <div id="videotext">
+        <div class="sidemenutitle">
+        영상 내 자막
+        <button class ='sidemenuclose' onclick="hide('videotext');">
+        >
+        </button>
+        </div>
+        <hr>
+        <div class="sidemenutext">
+            <script type="text/javascript">
+                function filter(){
+            
+                var value, name, item, i;
+            
+                value = document.getElementById("value").value.toUpperCase();
+                item = document.getElementsByClassName("videotextlist");
+            
+                for(i=0;i<item.length;i++){
+                name = item[i].getElementsByClassName("checked");
+                if(name[0].innerHTML.toUpperCase().indexOf(value) > -1){
+                    item[i].style.display = "block";
+                }else{
+                    item[i].style.display = "none";
+                }
+                }
+            }
+            </script>
+            <div class="search">
+            <input type="text" id="value" onkeyup="filter()" placeholder="검색하실 단어를 입력하세요.">
+            <hr>
+            </div>
+            <div id ="allvideotext">
+            {% for d in df_list %}
+            <div class ="videotextlist" style="padding-top: 20px;">
+                <span class="timestamps">
+                <button href="javascript:void(0);" class="seekTo">{{d.start_timestamps}}</button>
+                ~
+                <button href="javascript:void(0);" class="seekTo">{{d.timestamps}}</button>
+                </span>
+                <br>
+                <div class = "checked">
+                {{d.checked}}
+                </div>
+            </div>
+            {% endfor %}
+            </div>            
+        </div>
+    </div>
+
+    <div id="qna">
+        <div class="sidemenutitle">
+        QnA
+        <button class ='sidemenuclose' onclick="hide('qna');">
+        >
+        </button>
+        </div>
+        <hr>
+        <div class="sidemenutext">
+            <center>
+            <button class="recbutton" id="rec">키워드 음성검색 🔘</button>
+            <br><br>
+            <audio style="display: none;" controls>녹음된 소리를 재생할 audio 엘리먼트</audio>
+            </center>
+            <div id="rowList"></div>
+        </div>
+    </div>
+
+    <div id="reco">
+        <div class="sidemenutitle">
+        유튜브 추천영상
+        <button class ='sidemenuclose' onclick="hide('reco');">
+        >
+        </button>
+        </div>
+        <hr style="margin-bottom: 0px;">
+        <div class="sidemenutext">
+            {%for reco in range(0,10)%}
+            <a id = "recourl" target="_blank" href="{{reco_url[reco]}}">
+            <div id = "recovideo" style="text-align: center; padding: 10px; margin-bottom: 20px;">
+            <img style="width: 100%; height: 100%;" target="_blank"  src="{{reco_thumbnails[reco]}}" alt="썸네일" >
+            <p id = "recotitle"> {{reco_title[reco]}} </p>
+            </a>
+            </div>
+            {%endfor%}
+        </div>
+</div>
+
+
+</body>
+
+<!-- 질의응답 관련 스크립트 -->
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="/static/js/record.js"></script>
+</html>

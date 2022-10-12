@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+{%load static%}
+<link rel="stylesheet" type="text/css"
+href = "{% static 'surveyapp/css/test.css' %}">
+
+<script type="text/javascript" src="/static/surveyapp/js/test.js">
+</script>
+</head>
+
+
+<body>
+    <div class="container">
+        <div class="slider">
+          <img class="active" src="https://source.unsplash.com/gKk9rpyDryU">
+          <img src="https://source.unsplash.com/VFGEhLznjPU">
+          <img src="https://source.unsplash.com/InR-EhiO_js">
+        </div>
+        <nav class="slider-nav">
+          <ul>
+            <li class="arrow">
+              <button class="previous">
+                <span>
+                  <i class="ion-arrow-left-c">이전</i>
+                </span>
+              </button>
+            </li>
+            <li class="arrow">
+              <button class="next">
+                <span>
+                  <i class="ion-arrow-right-c">다음</i>
+                </span>
+              </button>
+            </li>
+          </ul>
+        </nav>
+
+        <p>자바스크립트를 이용하면 현재 날짜와 시간 정보에도 손쉽게 접근할 수 있어요!</p>
+
+        <button onclick="printDate()">현재 날짜와 시간 표시하기!</button>
+    
+        <p id="date"></p>
+</body>
+
+</html>

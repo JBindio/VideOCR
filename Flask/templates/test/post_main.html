@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<!-- static 폴더의 데이터 활용하기 -->
+
+<html>
+    <!-- HEAD(제목 등) -->
+    <!-- 브라우저에서 HTML 실행시 가장 먼저 읽어 들이는 곳 -->
+    <!-- JavaScript, CSS 등의 처리를 기본적으로 수행 -->
+<head>
+    <title>보강(보는강의)</title>
+
+    <link rel="stylesheet" type="text/css" href = "/static/css/style.css">
+    <link rel="stylesheet" type="text/css" href = "https://getbootstrap.kr/docs/5.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href = "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+
+    <script type="text/javascript" src="/static/js/main.js"></script>
+
+</head>
+
+    <!-- BODY(본문) -->
+<body>
+    {% include '/include/nav.html'%}
+<div class="main">
+
+    <div>
+    </div>
+    <center>
+  <form action="http://192.168.0.43:5000/learning", method="POST">
+    <div class="search">
+        <input name="url" type="url" placeholder="동영상 URL주소를 입력하세요." >
+        <button class="summit" type="submit">
+            <img class="summit" src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/icon/search.png" alt=""> 
+        </button>
+    </div>
+  </form>
+    </center>
+
+    <div>
+    </div>
+<br>
+<br>
+</div>
+
+<center>
+<div class="main">
+<div></div>
+
+<div class="row row-cols-1 row-cols-md-3 g-4">
+    <a href="/learning" style="text-decoration: none; color: #000;">
+    <div class="col">
+      <div class="card">
+        <img src="https://i.ytimg.com/vi/g4ctGPOZV1M/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLB1hqYIF1oi0ppFkcLIGwstrIKw1g" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">데이터에듀</h5>
+          <p class="card-text">[ADsP] <br> 1과목 데이터의 정의와 유형</p>
+        </div>
+      </div>
+    </div>
+    </a>
+
+    <a href="" style="text-decoration: none; color: #000;">
+    <div class="col">
+      <div class="card">
+        <img src="https://i.ytimg.com/vi/EMS5ZHlVgys/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLADYZHorQhadM3tJ3jzT_5ZcYI-JQ" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">EduAtoZ - Programming</h5>
+          <p class="card-text">[빅데이터 분석 기사 필기] <br> 1과목 개인정보보호법/제도 Part 1</p>
+        </div>
+      </div>
+    </div>
+    </a>
+
+    <a href="" style="text-decoration: none; color: #000;">
+    <div class="col">
+      <div class="card">
+        <img src="https://i.ytimg.com/vi/9jZHH4pwuTs/hqdefault.jpg?sqp=-oaymwEXCNACELwBSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLCDiuTWVzYoyalVQfDceEQz8act1A" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">흥달쌤</h5>
+          <p class="card-text">[정보처리기사 실기 샘플강의] <br>1과목 소프트웨어 공학</p>
+        </div>
+      </div>
+    </div>
+    </a>
+</div>
+</div>
+</center>
+
+<div>
+</div>
+
+{% include '/include/footer.html'%}
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<script src="https://getbootstrap.kr/docs/5.0/dist/js/bootstrap.bundle.min.js" 
+            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" 
+            crossorigin="anonymous"></script>
+            
+</body>
+</html>

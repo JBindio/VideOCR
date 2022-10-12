@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<!-- static 폴더의 데이터 활용하기 -->
+{% load static %}
+
+<html>
+    <!-- HEAD(제목 등) -->
+    <!-- 브라우저에서 HTML 실행시 가장 먼저 읽어 들이는 곳 -->
+    <!-- JavaScript, CSS 등의 처리를 기본적으로 수행 -->
+    <head>
+        <title>SURVEY & SERVICE</title>
+
+        <link rel="stylesheet" type="text/css"
+            href = "https://getbootstrap.kr/docs/5.0/dist/css/bootstrap.min.css">
+    
+        <link rel="stylesheet" type="text/css"
+            href = "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+
+        <link rel="stylesheet" type="text/css"
+            href = "{% static 'surveyapp/css/main_style.css' %}">
+    </head>
+
+    <!-- BODY(본문) -->
+    <body>
+        <!-- 메뉴 만들기 -->
+        <!-- 링크주소 = URL 주소 -->
+        <!-- 한곳에서 관리할수 있도록 include 처리 -->
+        {% include 'surveyapp/include/bootstrap_nav.html'%}
+        <!-- <hr id="hr"> -->
+        <center>
+    <div id="grid">
+        <div class="main">
+            <br>
+            <img src="{% static 'surveyapp/images/main/bin.png' %}" width="50%"><br><br>
+            <div class="info">
+
+                <p class="name">이정빈</p>
+                <div style="font-size: 18px">
+                <p>데이터분석 준전문가</p>
+                <p>팀장경력 3회</p>
+                <p>정보처리기사(필기)</p>
+                <p>실용음악보컬 전공</p>
+                <p style="font-weight: bold;">한국품질재단 미니프로젝트 대상</p>
+                </div>
+                <br>
+            </div>
+        </div>
+        
+        <div class="main">
+            <br>
+            <img src="{% static 'surveyapp/images/main/hyun.png' %}" width="50%"><br><br>
+            <div class="info">
+
+                <p class="name">허아현</p>
+                <div style="font-size: 18px">
+                <p>데이터분석 준전문가</p>
+                <p>사회조사분석사 2급</p>
+                <p>정보처리기사(필기)</p>
+                <p>데이터경영 전공</p>
+                <p style="font-weight: bold;">한국품질재단 미니프로젝트 대상</p>
+                </div>
+                <br>
+            </div>
+        </div>
+        
+        <div class="main">
+            <br>
+            <img src="{% static 'surveyapp/images/main/ju.png' %}" width="50%"><br><br>
+            <div class="info">
+
+                <p class="name">김동주</p>
+                <div style="font-size: 18px">
+                <p>데이터분석 준전문가</p>
+                <p>SQL 개발자</p>
+                <p>빅데이터 분석기사(필기)</p>
+                <p>경영정보학 전공</p>
+                <p>한국품질재단 미니프로젝트 참여</p>
+                </div>
+                <br>
+            </div>
+        </div>
+    </div>
+</center>
+
+    {% include 'surveyapp/include/footer.html'%}
+
+        <!-- 이미지 넣기 -->
+        <!-- src : 이미지 위치(웹 경로) -->
+        
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        
+        <script src="https://getbootstrap.kr/docs/5.0/dist/js/bootstrap.bundle.min.js" 
+                    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" 
+                    crossorigin="anonymous"></script>      
+    </body>
+</html>

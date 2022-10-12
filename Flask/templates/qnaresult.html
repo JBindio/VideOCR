@@ -1,0 +1,9 @@
+<link rel="stylesheet" type="text/css" href = "/static/css/learning.css">
+<span class="videoinfotext">입력된 음성</span> : {{recog_txt}}<br><hr>
+{% for d in df %}
+<span class="videoinfotext">키워드</span> : {{d.key}}<br>
+<span class="videoinfotext">설명</span> : {{d.txt}}<br>
+<span class="videoinfotext">링크</span> : <a href="{{d.lnk}}" target="_blank">네이버사전 지식백과 링크</a><br><br>
+{% endfor %}
+
+<!-- {{df}} -->

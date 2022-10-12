@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<!-- static 폴더의 데이터 활용하기 -->
+{% load static %}
+
+<html>
+    <!-- HEAD(제목 등) -->
+    <!-- 브라우저에서 HTML 실행시 가장 먼저 읽어 들이는 곳 -->
+    <!-- JavaScript, CSS 등의 처리를 기본적으로 수행 -->
+    <head>
+        <title>SURVEY & SERVICE</title>
+        <link rel="stylesheet" type="text/css"
+            href = "https://getbootstrap.kr/docs/5.0/dist/css/bootstrap.min.css">
+    
+        <link rel="stylesheet" type="text/css"
+            href = "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+
+        <link rel="stylesheet" type="text/css"
+            href = "{% static 'surveyapp/css/main_style.css' %}">
+
+    </head>
+
+<body>
+    <!-- 메뉴 만들기 -->
+    <!-- 링크주소 = URL 주소 -->
+    <!-- 한곳에서 관리할수 있도록 include 처리 -->
+    {% include 'surveyapp/include/bootstrap_nav.html'%}
+    <center>
+    <div style="width: 1200px; height: 600px; display: grid; grid-template-columns: 3fr 3fr 3fr; font-size: 30px; align-content: center;">
+        <div>
+        </div>
+        <div style="text-align: center;">
+                <img src="{% static 'surveyapp/images/survey/end.png' %}" style ="width: 70%;"><br>
+            <p style="font-size: 30px; color: #343333; font-weight: bold; text-decoration: none;">
+                설문에 응답해 주셔서<br>
+                감사합니다
+            </p> 
+        </div>
+        <div>
+        </div>
+    </div>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    
+    <script src="https://getbootstrap.kr/docs/5.0/dist/js/bootstrap.bundle.min.js" 
+                integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" 
+                crossorigin="anonymous"></script>   
+            </center>
+</body>
+
+<footer>
+{% include 'surveyapp/include/footer.html'%}
+</footer>

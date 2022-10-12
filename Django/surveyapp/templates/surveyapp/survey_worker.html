@@ -1,0 +1,145 @@
+<html>
+    {% load static %}
+    <head>
+        <title>SURVEY & SERVICE</title>
+        <meta charset="utf-8">
+        
+        <link rel="stylesheet" type="text/css"
+            href = "https://getbootstrap.kr/docs/5.0/dist/css/bootstrap.min.css">
+    
+        <link rel="stylesheet" type="text/css"
+            href = "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+
+        <link rel="stylesheet" type="text/css"
+            href = "{% static 'surveyapp/css/main_style.css' %}">
+
+        <script type="text/javascript" src="/static/surveyapp/js/survey_Q1.js">
+        </script>
+    </head>
+    <body>
+        <form action="/survey/survey_worker_insert/" method="post">
+        {% csrf_token %}
+
+        {% include 'surveyapp/include/bootstrap_nav.html'%}
+        <h1 style="text-align: center; font-weight: bold; margin: 30px;"> 최저임금 만족도 조사(근로자)</h1>
+        <hr>
+        <fieldset name="basic" style="font-weight: bold; font-size: 20px;">
+            업체구분 : <input type="radio" name="eco" value="1"/> 음식점
+                        &nbsp
+                        <input type="radio" name="eco" value="2"/> 카페
+                        &nbsp
+                        <input type="radio" name="eco" value="3"/>기타
+                        <input type="text" name="ect">
+                        <br>
+            나이: <input type="number" name="age" min="0"/>
+                    <br>
+            성별: <input type="radio" name="gender" value="m"/> 남성
+                    <input type="radio" name="gender" value="f"/> 여성
+        </fieldset>
+            <hr>
+            <fieldset name="Q1">
+                <legend><b>1. 최저임금 인상에 대해 얼마나 만족하십니까?</b></legend>
+                <input type="radio" name="Q1" value="5" onclick="show('Q1_1'); hide('Q1_2')"/>매우 만족<br>
+                <input type="radio" name="Q1" value="4" onclick="show('Q1_1'); hide('Q1_2')"/>만족<br>
+                <input type="radio" name="Q1" value="3" onclick="show('Q1_1'); hide('Q1_2')"/>보통<br>
+                <input type="radio" name="Q1" value="2" onclick="show('Q1_2'); hide('Q1_1')"/>불만족<br>
+                <input type="radio" name="Q1" value="1" onclick="show('Q1_2'); hide('Q1_1')"/>매우 불만족
+            </fieldset>
+            
+            <fieldset id = "Q1_1" name="Q1_1" style="display: none;">
+                <hr>
+                <legend><b>1-1. 최저임금 인상에 대해 만족하시는 이유는 무엇입니까?<br>
+                                <u>(1번 문항 '매우 만족', '만족', '보통' 응답자만 응답)</u></b></legend>
+                <input type="radio" name="Q1_1" value="1" />삭감 혹은 동결로 예상했으나 인상돼서<br>
+                <input type="radio" name="Q1_1" value="2" />적당한 인상률<br>
+                <input type="radio" name="Q1_1" value="3" />인상률이 생각보다 높아서<br>
+                <input type="radio" name="Q1_1" value="4"/>기타
+                <input type="text" name="ect">
+            </fieldset>
+            
+            <fieldset id = "Q1_2" name="Q1_2" style="display: none;">
+                <hr>
+                <legend><b>1-2. 최저임금 인상에 대해 불만족 하시는 이유는 무엇입니까?<br>
+                                <u>(1번 문항 '매우 불만족', '불만족' 응답자만 응답)</u></b></legend>
+                <input type="radio" name="Q1_2" value="1" />삭감 혹은 동결을 원했기 때문에<br>
+                <input type="radio" name="Q1_2" value="2" />예상했던 인상률보다 적어서<br>
+                <input type="radio" name="Q1_2" value="3" />현 경기 상황을 반영하지 못한 것 같아서<br>
+                <input type="radio" name="Q1_2" value="4" />과도하게 인상된 것 같아서<br>
+                <input type="radio" name="Q1_2" value="5"/>기타
+                <input type="text" name="ect">
+            </fieldset>
+            <hr>
+            <fieldset name="Q2">
+                <legend><b>2. 최저임금 인상률에 대해 어떻게 생각하십니까?</b></legend>
+                <input type="radio" name="Q2" value="1" />경기 상황을 고려하지 않음<br>
+                <input type="radio" name="Q2" value="2" />적당함<br>
+                <input type="radio" name="Q2" value="3" />경기 상황을 고려한 인상률<br>
+                <input type="radio" name="Q2" value="4"/>기타
+                <input type="text" name="ect">
+            </fieldset>
+            <hr>
+            <fieldset name="Q3">
+                <legend><b>3. 최저임금 상승 속도에 대해 어떻게 생각하십니까?</b></legend>
+                <input type="radio" name="Q3" value="1" />느리다고 생각함<br>
+                <input type="radio" name="Q3" value="2" />적당함<br>
+                <input type="radio" name="Q3" value="3" />빠르다고 생각함<br>
+                <input type="radio" name="Q3" value="4" />적당한 속도로 조절이 필요함
+            </fieldset>
+            <hr>
+            <fieldset name="Q4">
+                <legend><b>4. 고용주의 어려움에 공감하십니까?</b></legend>
+                <input type="radio" name="Q4" value="1" />매우 공감<br>
+                <input type="radio" name="Q4" value="2" />어느정도 공감<br>
+                <input type="radio" name="Q4" value="3" />보통<br>
+                <input type="radio" name="Q4" value="4" />공감되지 않음<br>
+                <input type="radio" name="Q4" value="5" />전혀 공감되지 않음
+            </fieldset>
+            <hr>
+            <fieldset name="Q5">
+                <legend><b>5. 최저시급 인상으로 인해 가장 크게 변화할 것이라고 생각하는 요소는 무엇입니까?</b></legend>
+                <input type="radio" name="Q5" value="1" />근무시간 단축<br>
+                <input type="radio" name="Q5" value="2" />갑작스러운 해고<br>
+                <input type="radio" name="Q5" value="3" />사업장 수익 감소<br>
+                <input type="radio" name="Q5" value="4" />상품/서비스 등 물가 인상<br>
+                <input type="radio" name="Q5" value="5" />월 급여의 인상<br>
+                <input type="radio" name="Q5" value="6" />함께 일하는 동료 인원의 감소
+                <input type="radio" name="Q5" value="7"/>기타
+                <input type="text" name="ect">
+            </fieldset>
+            <hr>
+            <fieldset name="Q6">
+                <legend><b>6. 최저임금을 결정할 때 우선적으로 고려해야 할 사항은 무엇이라고 생각하십니까?</b></legend>
+                <input type="radio" name="Q6" value="1" />근로자의 생계비<br>
+                <input type="radio" name="Q6" value="2" />기업(사업장)의 지불능력<br>
+                <input type="radio" name="Q6" value="3" />경제성장률<br>
+                <input type="radio" name="Q6" value="4" />노동생산성<br>
+                <input type="radio" name="Q6" value="5" />물가상승률<br>
+                <input type="radio" name="Q6" value="6" />소득분배 상황<br>
+                <input type="radio" name="Q6" value="7" />실업률 등 고용사정<br>
+                <input type="radio" name="Q6" value="8" />일반근로자의 심금수준 및 인상률<br>
+                <input type="radio" name="Q6" value="9"/>기타
+                <input type="text" name="ect">
+            </fieldset>
+            <hr>
+            <fieldset name="Q7">
+            <legend><b>기타의견사항</b></legend>
+            <br>
+            <textarea cols="100" rows="3" name="Q7" placeholder="의견을 입력하세요."></textarea>
+            <br>
+            <br>
+            <input type="submit" value="제출" style="font-size: 25px;">
+            </fieldset>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        
+        <script src="https://getbootstrap.kr/docs/5.0/dist/js/bootstrap.bundle.min.js" 
+                    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" 
+                    crossorigin="anonymous"></script>
+    </form>  
+    </body>
+    
+    <footer>
+    {% include 'surveyapp/include/footer.html'%}
+    </footer>
+</html>

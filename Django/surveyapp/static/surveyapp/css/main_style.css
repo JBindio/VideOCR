@@ -1,0 +1,15 @@
+html{margin: 0px; padding: 0px;}
+
+body{background-color: #EEEEEE;
+}
+
+#grid{max-width: 100%; display: grid; 
+       grid-template-columns: 3fr 3fr 3fr;
+}
+
+.name{font-size: 30px; font-weight: bold; padding: 10px;}
+
+.info{background-color: #343333; color: #eeeeee; padding-top: 20px;}
+
+fieldset{color:#343333; margin: 30px;
+}
