@@ -131,6 +131,13 @@ body{
   font-weight: bold;
 }
 
+.hashtag {
+  border: 1px solid #bbb; 
+  border-radius: 30px; 
+  padding:10px; 
+  font-size: 20px;
+}
+
 #videotext {
   width: 25%;
   height: 100%;
@@ -189,6 +196,10 @@ body{
   border-bottom-left-radius: 20px;
   border-bottom-right-radius: 20px;
   padding: 10px;
+}
+
+.highlight {
+  color: red;
 }
 
 #reco {

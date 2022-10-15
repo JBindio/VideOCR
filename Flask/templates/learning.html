@@ -122,7 +122,23 @@
         <span class="videoinfotext">재생시간 ⏳</span> : {{vi_duration}} <br><br>
         <span class="videoinfotext">유튜브 조회수 👀</span> : {{vi_view_count}}회 <br><br>
         <span class="videoinfotext">유튜브 좋아요 👍🏻</span> : {{vi_like_count}}개 <br><hr style="margin-bottom: 25px;">
-        {{hash_final}}
+
+        <span class="hashtag"> KeyBert 해시태그</span>
+        <br>
+        <br>
+        {%for hash_keybert in hash_keybert%}
+        <span style="color: blue; font-size: 17px;"> #{{hash_keybert}} </span>
+        {%endfor%}
+        <br>
+        <br>
+        <br>
+        <span class="hashtag"> Youtube 해시태그</span>
+        <br>
+        <br>
+        {%for hash_youtube in hash_youtube%}
+        <span style="color: blue; font-size: 17px;"> #{{hash_youtube}} </span>
+        {%endfor%}
+        
         
         <!-- <center>
         <span class="sidetextbutton">유튜브 추천영상</span>
@@ -150,18 +166,27 @@
             <script type="text/javascript">
                 function filter(){
             
-                var value, name, item, i;
+                var inputvalue, outputtext, item, i, index;
             
-                value = document.getElementById("value").value.toUpperCase();
+                inputvalue = document.getElementById("value").value.toUpperCase();
+
                 item = document.getElementsByClassName("videotextlist");
-            
-                for(i=0;i<item.length;i++){
-                name = item[i].getElementsByClassName("checked");
-                if(name[0].innerHTML.toUpperCase().indexOf(value) > -1){
-                    item[i].style.display = "block";
-                }else{
+                
+
+                for(i=0; i < item.length; i++){
+                    outputtext = item[i].getElementsByClassName("checked");
+                    index = outputtext[0].innerHTML.toUpperCase().indexOf(inputvalue)
+
+                    if(index >= 0){
+                        //innerHTML = outputtext[0].innerHTML.substring(0,index) + "<span class='highlight'>" + outputtext[0].innerHTML.substring(index,index+inputvalue.length) + "</span>" + outputtext[0].innerHTML.substring(index + inputvalue.length);
+                        //outputtext[0].innerHTML = innerHTML
+                        item[i].style.display = "block"
+                        //inputvalue = null;
+                        
+                    }
+                    else{
                     item[i].style.display = "none";
-                }
+                    }
                 }
             }
             </script>

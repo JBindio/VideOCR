@@ -56,6 +56,15 @@ $btn.onclick = async function (event) {
         
             let today = new Date();   
             
+            var year = today.getFullYear();
+            var month = ('0' + (today.getMonth() + 1)).slice(-2);
+            var day = ('0' + today.getDate()).slice(-2);
+            var hours = ('0' + today.getHours()).slice(-2); 
+            var minutes = ('0' + today.getMinutes()).slice(-2);
+            var seconds = ('0' + today.getSeconds()).slice(-2); 
+            
+            var dateString = year + '-' + month  + '-' + day + ' ' + hours + ':' + minutes  + ':' + seconds;
+
             function sleep(ms) {
                 const wakeUpTime = Date.now() + ms;
                 while (Date.now() < wakeUpTime) {}
@@ -63,7 +72,7 @@ $btn.onclick = async function (event) {
 
             const a = document.createElement("a")
             a.href = blobURL
-            a.download = "{0}".format(today)
+            a.download = "{0}".format(dateString)
             a.click()
             a.remove()
             window.URL.revokeObjectURL(blobURL);

@@ -277,14 +277,16 @@ def learning():
     candidates.append(temp_)
       
   result = []
+  
   for i in range(len(candidates)):
     result += candidates[i]
-    
+  
+  result = list(set(result))  
   model = SentenceTransformer('sentence-transformers/xlm-r-100langs-bert-base-nli-stsb-mean-tokens')
   doc_embedding = model.encode([hash_test])
   candidate_embeddings = model.encode(result)
   
-  top_n = 6
+  top_n = 5
   distances = cosine_similarity(doc_embedding, candidate_embeddings)
   # keywords = [result[index] for index in distances.argsort()[0][-top_n:]]
   
@@ -295,7 +297,7 @@ def learning():
                                       candidate_embeddings)
 
 # 코사인 유사도에 기반하여 키워드들 중 상위 top_n개의 단어를 pick.
-  words_idx = list(distances.argsort()[0][-20:])
+  words_idx = list(distances.argsort()[0][-30:])
 
   words_vals = [result[index] for index in words_idx]
   distances_candidates = distances_candidates[np.ix_(words_idx, words_idx)]
@@ -305,12 +307,13 @@ def learning():
   candidate = None
   
   for combination in itertools.combinations(range(len(words_idx)), top_n):
-    sim = sum([distances_candidates[i][j] for i in combination for j in combination if i != j])
-    if sim < min_sim:
-      candidate = combination
-      min_sim = sim
+      sim = sum([distances_candidates[i][j] for i in combination for j in combination if i != j])
+      if sim < min_sim:
+        candidate = combination
+        min_sim = sim
         
-      hash_final = [words_vals[idx] for idx in candidate]
+  hash_keybert = [words_vals[idx] for idx in candidate]
+  hash_youtube = reco_keyword.split(', ')
 
 
   return render_template('/learning.html', 
@@ -318,7 +321,7 @@ def learning():
                         vi_view_count=vi_view_count, vi_like_count=vi_like_count, vi_duration=vi_duration, 
                         ch_id=ch_id, ch_title=ch_title, ch_img=ch_img, ch_subscriber=ch_subscriber,
                         reco_url=reco_url, reco_thumbnails=reco_thumbnails, reco_title=reco_title,
-                        df_list=df_list, hash_final= hash_final)
+                        df_list=df_list, hash_keybert = hash_keybert, hash_youtube = hash_youtube)
   
 # ------------------------------------------------------------------------
 # URL오류 화면
