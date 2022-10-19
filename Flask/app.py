@@ -129,7 +129,7 @@ def learning():
   
   # 유튜브 API
   # API 정보입력
-  DEVELOPER_KEY = 'AIzaSyDLQcjlNoifBOTIe5HM5KSfc9qmBoH7S9g'
+  DEVELOPER_KEY = 'API Key'
   YOUTUBE_API_SERVICE_NAME = "youtube"
   YOUTUBE_API_VERSION = "v3"
 
